@@ -1,42 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Portfolio Website</title>
+    <title>Psalm — Portfolio</title>
 </head>
 <body>
-    <header>
-        <a href="#" class="logo">Psalm</a>
 
-        <nav>
-            <a href="#" class="active"> Home</a>
-            <a href="#" >Services</a>
-            <a href="#" >Skills</a>
-            <a href="#" >Education</a>
-            <a href="#" >Experience</a>
-            <a href="#" >Contact</a>
+    <!-- HEADER -->
+    <header id="header">
+        <a href="#home" class="logo">Ps<span>a</span>lm</a>
+        <nav id="nav">
+            <a href="#home" class="active">Home</a>
+            <a href="#services">Services</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
         </nav>
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </header>
-    <section class="home">
+
+    <!-- HERO -->
+    <section class="home" id="home">
         <div class="home-img">
-            <img src="main.jpg" alt="">
+            <img src="main.jpg" alt="Psalm">
         </div>
         <div class="home-content">
-            <h1>Hi, It's <span>Psalm!</span></h1>
-            <h3 class="typing-text">I'm a <span></span></h3>
-            <p>I specialize in bridging the gap between complex relational database architecture and insightful product analysis, blending rigorous data design with clear, consumer-focused technical communication.</p>
-            <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <p class="eyebrow">Portfolio</p>
+            <h1>Hi, I'm <em>Psalm.</em></h1>
+            <div class="typing-wrap">
+                <span class="prefix">I'm a</span>
+                <span id="typed-text"></span>
             </div>
-            <a href="#" class="btn">Hire me</a>
+            <p>I specialize in bridging the gap between complex relational database architecture and insightful product analysis — blending rigorous data design with clear, consumer-focused technical communication.</p>
+            <div class="actions">
+                <a href="#contact" class="btn">Hire Me</a>
+                <a href="#experience" class="btn btn-ghost">View Work</a>
+            </div>
+            <div class="social-icons">
+                <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="#" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="scroll-cue">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
+
+    <!-- SERVICES -->
+    <section class="services reveal" id="services">
+        <div class="section-header">
+            <p class="eyebrow">What I offer</p>
+            <h2 class="section-title">Services</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-database"></i></div>
+                <h3>Database Architecture</h3>
+                <p>Designing scalable, normalized relational databases with optimized query performance, ERD modeling, and schema design for production systems.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Data &amp; Product Analysis</h3>
+                <p>Transforming raw data into actionable insights through dashboards, KPI tracking, cohort analysis, and consumer-behavior reporting.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+                <h3>Web Development</h3>
+                <p>Building clean, responsive, and performant web interfaces with a focus on user experience, accessibility, and modern frontend standards.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                <h3>Technical Writing</h3>
+                <p>Producing clear documentation — API guides, technical specs, product briefs, and blog content that demystifies complexity for any audience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills-section reveal" id="skills">
+        <div class="section-header">
+            <p class="eyebrow">My expertise</p>
+            <h2 class="section-title">Skills</h2>
+        </div>
+        <div class="skills-layout">
+            <div class="skill-group">
+                <h4>Languages &amp; Databases</h4>
+                <div class="skill-bars">
+                    <div class="skill-item">
+                        <div class="skill-label"><span>SQL / PostgreSQL</span><span>90%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" data-w="90"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Python</span><span>75%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" data-w="75"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>JavaScript</span><span>70%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" data-w="70"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>MySQL / MongoDB</span><span>80%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" data-w="80"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h4>Tools &amp; Platforms</h4>
+                <div class="skill-bars">
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Tableau / Power BI</span><span>78%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" data-w="78"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>HTML / CSS</span><span>88%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" data-w="88"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Git / GitHub</span><span>82%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" data-w="82"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Figma</span><span>65%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" data-w="65"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tags-row">
+            <span class="tag">REST APIs</span>
+            <span class="tag">ERD Modeling</span>
+            <span class="tag">Data Cleaning</span>
+            <span class="tag">Agile / Scrum</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Responsive Design</span>
+            <span class="tag">Excel / Sheets</span>
+            <span class="tag">Technical Writing</span>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="education reveal" id="education">
+        <div class="section-header">
+            <p class="eyebrow">Academic background</p>
+            <h2 class="section-title">Education</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-date">2020 — 2024</span>
+                    <h3>Bachelor of Science in Information Technology</h3>
+                    <p class="timeline-place"><i class="fa-solid fa-building-columns"></i> University of Santo Tomas</p>
+                    <p>Graduated with honors. Focused on database systems, software engineering, and data analytics. Completed a thesis on relational schema optimization for e-commerce platforms.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-date">2018 — 2020</span>
+                    <h3>Senior High School — STEM Track</h3>
+                    <p class="timeline-place"><i class="fa-solid fa-school"></i> Guagua National Colleges</p>
+                    <p>Completed the Science, Technology, Engineering, and Mathematics strand with a focus on computer science fundamentals and research methodology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="experience reveal" id="experience">
+        <div class="section-header">
+            <p class="eyebrow">Work history</p>
+            <h2 class="section-title">Experience</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-date">2024 — Present</span>
+                    <h3>Database Engineer &amp; Data Analyst</h3>
+                    <p class="timeline-place"><i class="fa-solid fa-briefcase"></i> Freelance / Remote</p>
+                    <p>Architecting PostgreSQL databases for startups, building analytics dashboards, writing technical documentation, and delivering data-driven product recommendations to stakeholders.</p>
+                    <div class="card-tags">
+                        <span>PostgreSQL</span><span>Tableau</span><span>Python</span><span>Technical Writing</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-date">2023 — 2024</span>
+                    <h3>Web Developer Intern</h3>
+                    <p class="timeline-place"><i class="fa-solid fa-briefcase"></i> Tech Solutions Inc.</p>
+                    <p>Developed and maintained responsive web interfaces, collaborated with senior developers on REST API integrations, and contributed to internal tooling built on HTML, CSS, and JavaScript.</p>
+                    <div class="card-tags">
+                        <span>HTML/CSS</span><span>JavaScript</span><span>REST APIs</span><span>Git</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-date">2022 — 2023</span>
+                    <h3>Technical Content Writer</h3>
+                    <p class="timeline-place"><i class="fa-solid fa-briefcase"></i> Content Studio PH</p>
+                    <p>Produced 50+ articles, API guides, and product briefs for software and SaaS clients. Specialized in making dense technical concepts accessible to non-technical audiences.</p>
+                    <div class="card-tags">
+                        <span>Technical Writing</span><span>SEO</span><span>Research</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact reveal" id="contact">
+        <div class="section-header">
+            <p class="eyebrow">Get in touch</p>
+            <h2 class="section-title">Contact</h2>
+        </div>
+        <div class="contact-layout">
+            <div class="contact-info">
+                <p class="contact-intro">Have a project in mind or just want to say hello? My inbox is always open — I'll get back to you as soon as I can!</p>
+                <ul class="contact-list">
+                    <li><i class="fa-solid fa-envelope"></i><a href="mailto:psalm@email.com">psalm@email.com</a></li>
+                    <li><i class="fa-solid fa-phone"></i><a href="tel:+639000000000">+63 900 000 0000</a></li>
+                    <li><i class="fa-solid fa-location-dot"></i><span>Guagua, Pampanga, Philippines</span></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="your@email.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" placeholder="Project inquiry...">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 <span>Psalm</span>. Crafted with care.</p>
+    </footer>
+
+    <script>
+        /* Sticky header */
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        /* Mobile menu */
+        const menuBtn = document.getElementById('menuBtn');
+        const nav = document.getElementById('nav');
+        menuBtn.addEventListener('click', () => nav.classList.toggle('open'));
+        document.querySelectorAll('nav a').forEach(a => {
+            a.addEventListener('click', () => nav.classList.remove('open'));
+        });
+
+        /* Active nav on scroll */
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(s => {
+                if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+            });
+            navLinks.forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+            });
+        });
+
+        /* Typewriter */
+        const roles = ['Web Developer', 'UI Designer', 'Data Analyst', 'DB Engineer', 'Script Writer'];
+        const el = document.getElementById('typed-text');
+        let rIdx = 0, cIdx = 0, deleting = false;
+        function type() {
+            const word = roles[rIdx];
+            if (!deleting) {
+                el.textContent = word.slice(0, ++cIdx);
+                if (cIdx === word.length) { deleting = true; return setTimeout(type, 1800); }
+            } else {
+                el.textContent = word.slice(0, --cIdx);
+                if (cIdx === 0) { deleting = false; rIdx = (rIdx + 1) % roles.length; }
+            }
+            setTimeout(type, deleting ? 55 : 95);
+        }
+        setTimeout(type, 1200);
+
+        /* Scroll reveal */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        /* Skill bars */
+        const barObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.querySelectorAll('.skill-fill').forEach(bar => {
+                        bar.style.width = bar.dataset.w + '%';
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.skills-section').forEach(el => barObserver.observe(el));
+
+        /* Form submit */
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = 'Sent! <i class="fa-solid fa-check"></i>';
+            btn.style.background = '#1a7a40';
+            setTimeout(() => {
+                btn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
+                btn.style.background = '';
+                e.target.reset();
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
