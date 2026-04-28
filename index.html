@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Psalm — Portfolio</title>
 </head>
@@ -21,8 +21,10 @@
             <a href="#experience">Experience</a>
             <a href="#contact">Contact</a>
         </nav>
+        <!-- Mobile backdrop (closes menu when clicked) -->
+        <div class="nav-backdrop" id="navBackdrop"></div>
         <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars" id="menuIcon"></i>
         </button>
     </header>
 
@@ -262,90 +264,138 @@
                     <label for="message">Message</label>
                     <textarea id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
                 </div>
-                <button type="submit" class="btn">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+                <button type="submit" class="btn">
+                    Send Message <i class="fa-solid fa-paper-plane"></i>
+                </button>
             </form>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <p>© 2025 <span>Psalm</span>. Crafted with care.</p>
+        <div class="footer-inner">
+            <div class="footer-logo">Ps<span>a</span>lm</div>
+            <p>© 2025 <span>Psalm</span>. Crafted with care.</p>
+        </div>
     </footer>
 
     <script>
-        /* Sticky header */
+        /* ── Sticky header ── */
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        /* ── Mobile menu ── */
+        const menuBtn      = document.getElementById('menuBtn');
+        const menuIcon     = document.getElementById('menuIcon');
+        const nav          = document.getElementById('nav');
+        const navBackdrop  = document.getElementById('navBackdrop');
+
+        function openMenu() {
+            nav.classList.add('open');
+            navBackdrop.classList.add('open');
+            menuIcon.className = 'fa-solid fa-xmark';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            nav.classList.remove('open');
+            navBackdrop.classList.remove('open');
+            menuIcon.className = 'fa-solid fa-bars';
+            document.body.style.overflow = '';
+        }
+
+        menuBtn.addEventListener('click', () => {
+            nav.classList.contains('open') ? closeMenu() : openMenu();
         });
 
-        /* Mobile menu */
-        const menuBtn = document.getElementById('menuBtn');
-        const nav = document.getElementById('nav');
-        menuBtn.addEventListener('click', () => nav.classList.toggle('open'));
+        navBackdrop.addEventListener('click', closeMenu);
+
         document.querySelectorAll('nav a').forEach(a => {
-            a.addEventListener('click', () => nav.classList.remove('open'));
+            a.addEventListener('click', closeMenu);
         });
 
-        /* Active nav on scroll */
+        /* ── Active nav on scroll ── */
         const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('nav a');
+        const navLinks  = document.querySelectorAll('nav a');
+
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(s => {
-                if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+                if (window.scrollY >= s.offsetTop - 130) {
+                    current = s.getAttribute('id');
+                }
             });
             navLinks.forEach(a => {
                 a.classList.toggle('active', a.getAttribute('href') === '#' + current);
             });
-        });
+        }, { passive: true });
 
-        /* Typewriter */
+        /* ── Typewriter ── */
         const roles = ['Web Developer', 'UI Designer', 'Data Analyst', 'DB Engineer', 'Script Writer'];
-        const el = document.getElementById('typed-text');
+        const typedEl = document.getElementById('typed-text');
         let rIdx = 0, cIdx = 0, deleting = false;
+
         function type() {
             const word = roles[rIdx];
             if (!deleting) {
-                el.textContent = word.slice(0, ++cIdx);
-                if (cIdx === word.length) { deleting = true; return setTimeout(type, 1800); }
+                typedEl.textContent = word.slice(0, ++cIdx);
+                if (cIdx === word.length) {
+                    deleting = true;
+                    return setTimeout(type, 1900);
+                }
             } else {
-                el.textContent = word.slice(0, --cIdx);
-                if (cIdx === 0) { deleting = false; rIdx = (rIdx + 1) % roles.length; }
+                typedEl.textContent = word.slice(0, --cIdx);
+                if (cIdx === 0) {
+                    deleting = false;
+                    rIdx = (rIdx + 1) % roles.length;
+                }
             }
-            setTimeout(type, deleting ? 55 : 95);
+            setTimeout(type, deleting ? 52 : 90);
         }
-        setTimeout(type, 1200);
+        setTimeout(type, 1300);
 
-        /* Scroll reveal */
+        /* ── Scroll reveal ── */
         const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.08 });
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    revealObserver.unobserve(e.target); /* fire once */
+                }
+            });
+        }, { threshold: 0.07 });
+
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        /* Skill bars */
+        /* ── Skill bars ── */
         const barObserver = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 if (e.isIntersecting) {
                     e.target.querySelectorAll('.skill-fill').forEach(bar => {
                         bar.style.width = bar.dataset.w + '%';
                     });
+                    barObserver.unobserve(e.target);
                 }
             });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.25 });
+
         document.querySelectorAll('.skills-section').forEach(el => barObserver.observe(el));
 
-        /* Form submit */
+        /* ── Form submit ── */
         function handleSubmit(e) {
             e.preventDefault();
             const btn = e.target.querySelector('button[type="submit"]');
+            const original = btn.innerHTML;
             btn.innerHTML = 'Sent! <i class="fa-solid fa-check"></i>';
-            btn.style.background = '#1a7a40';
+            btn.style.background = 'linear-gradient(135deg, #1a7a40, #0f5c30)';
+            btn.disabled = true;
             setTimeout(() => {
-                btn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
+                btn.innerHTML = original;
                 btn.style.background = '';
+                btn.disabled = false;
                 e.target.reset();
-            }, 3000);
+            }, 3200);
         }
     </script>
 </body>
